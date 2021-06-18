@@ -1,0 +1,23 @@
+version: '3'
+services: 
+    web:
+        image: node:lts-alpine
+        working_dir: /code
+        volumes: 
+            - .:/code
+        ports: 
+            - "8081:8081"
+        command: yarn start
+    mysql:
+        image: mysql:latest
+        volumes: 
+            - ./mysql/data:/var/lib/mysql
+        environment: 
+            - MYSQL_ROOT_PASSWORD=123456
+            - MYSQL_DATABASE=code_admin
+        ports: 
+            - "3308:3306"
+        restart: always
+        privileged: true
+
+    
