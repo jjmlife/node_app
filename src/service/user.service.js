@@ -6,11 +6,7 @@ class UserService {
         const {name, password} = user
         console.log('jm', user);
         const sql = `INSERT INTO user (name, password) VALUES (?,?);`;
-        // try {
 
-        // } catch (error) {
-          
-        // }
         const result = await conns.execute(sql,[name, password])
         return result[0];
     }
